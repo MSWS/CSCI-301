@@ -1,0 +1,112 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in,lmargin=0.4in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{lscape}
+
+\title{\vspace{-5ex}CSCI 301 HW 11}
+\author{Isaac Boaz}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Let
+\begin{align*}
+   R &= \text{Rock} & = 150 \\
+   C &= \text{Classical} & = 100 \\
+   J &= \text{Jazz} & = 75
+\end{align*}
+\begin{align*}
+    R \wedge C = 30 \\
+    R \wedge J = 20 \\
+    C \wedge J = 10 \\
+    R \wedge C \wedge J = 5
+\end{align*}
+
+\begin{enumerate}[label=\alph*]
+    \item \begin{align*}
+        \text{Rock Music Only} = R = 150 \\
+        \text{Classical Music Only} = C = 100 \\
+        \text{Jazz Music Only} = J = 75
+    \end{align*}
+    \item \begin{align*}
+        \text{Rock and Classical} = R \wedge C = 30 \\
+        \text{Rock and Jazz} = R \wedge J = 20 \\
+        \text{Classical and Jazz} = C \wedge J = 10 \\
+    \end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\begin{landscape}
+    \section*{Problem 2}
+    \footnotesize
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        \makecell{Alice committed\\the burglary} &
+        \makecell{Bob committed\\the burglary} &
+        \makecell{Carol comitted\\the burglary} &
+        \makecell{The burglar was\\wearing gloves} &
+        \makecell{The burglar was\\wearing a hat} &
+        \makecell{If the burglar was wearing gloves,\\ then it was not Bob.} &
+        \makecell{The thief was wearing a hat,\\ only if it was not Carol.} &
+        \makecell{If the burglar was not wearing gloves,\\ then it was not Alice.} \\
+        \hline
+        A & B & C & G & H & \(G \implies \tilde{B}\) & \(\tilde{C} \implies H\) & \(\tilde{G} \implies \tilde{A}\) \\
+        \hline
+        F & T & T & F & F & T & T & T \\
+        F & T & T & F & T & T & T & T \\
+        F & T & T & T & F & F & T & T \\
+        F & T & T & T & T & F & T & T \\
+        T & F & T & F & F & T & T & F \\
+        T & F & T & F & T & T & T & F \\
+        T & F & T & T & F & T & T & T \\
+        T & F & T & T & T & T & T & T \\
+        T & T & F & F & F & T & F & F \\
+        T & T & F & F & T & T & T & F \\
+        T & T & F & T & F & F & F & T \\
+        T & T & F & T & T & F & T & T \\
+        \hline
+        T & T & F & F & F & T & F & F \\
+        \textbf{T} & \textbf{T} & \textbf{F} & \textbf{T} & \textbf{F} & \textbf{F} & \textbf{F} & \textbf{T} \\
+        \hline
+    \end{tabular}\\
+    \normalsize
+    \subsection*{Steps Taken}
+    \begin{enumerate}[label=\arabic*.]
+        \item I first generated all possible 5-long combinations of Truth and Falsehood.
+        \item Since we are told there are two burglars, I filtered any combination that did not have two Truths in the first three positions.
+        \item I then did the logic for each potential combination.
+        \item Since we are told that only the innocent person told the truth (ie only one statement should be true), I filtered combinations that had more than 1 truthful statement.
+        \item This leaves us with the bottom two possible combinations.
+        \item Lastly, since we know the innocent person told the truth, I cross-referenced which person had the truthful statement with which person is marked innocent.
+        \item This gives us the conclusion that Alice and Bob are the burglars and that the burglar was wearing gloves (but not a hat).
+    \end{enumerate}
+\end{landscape}
+
+\pagebreak
+
+\section*{Problem 3}
+\begin{enumerate}[label=\arabic*)]
+    \item \begin{enumerate}
+        \item \(\forall a,b \in \mathbf{Z}, E(ab) \land E(a+b) \implies E(a) \land E(b)\)
+        % \item For some a,b in Z. If either ab or a+b are not even, then both a and b are not even.
+        \item \(\exists a,b \in \mathbf{Z}, \neg (E(ab) \lor E(a+b)) \implies \neg (E(a) \lor E(b))\)
+        \item \((E(ab) \lor E(a+b)) \lor \neg (E(a) \lor E(b))\)
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item \(\forall a,b \in Z, 4 \mid (a^2 + b^2) \implies \neg O(a) \land \neg O(b)\)
+        \item \(\exists a,b \in Z, \neg(4 \mid (a^2 + b^2)) \implies O(a) \lor O(b)\)
+        \item \(\exists a,b \in Z, (4 \mid (a^2 + b^2)) \lor O(a) \lor O(b)\)
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
