@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{makecell}
+% \usepackage{lscape}
+
+\title{\vspace{-5ex}CSCI 301 HW 3}
+\author{Isaac Boaz}
+
+\newtheorem*{theorem}{Proposition}
+
+\begin{document}
+\maketitle
+
+\begin{theorem}
+    If \(A, B\), and \(C\) are sets, then \(A- (B \cap C) = (A - B) \cup (A - C)\)
+\end{theorem}
+
+\begin{proof}
+    By definition of set equality, \(A = B \iff A \subseteq B \land B \subseteq A\). \\
+    Proving \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\
+    Suppose \(x \in A-(B \cap C)\) \\
+    By definition of complement, \(x \in A \land x \notin (B \cap C)\) \\
+    Thus \(x \in (A-B) \cup (A - C)\) \\
+    Therefore \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\
+
+    \noindent
+    Proving \((A-B) \cup (A - C) \subseteq A-(B \cap C)\) \\
+    Suppose \(y \in (A-B) \cup (A - C)\) \\
+    By definition of union, \(y \in (A-B) \lor y \in (A - C)\) \\
+    WLOG suppose \(y \in (A-B)\) \\
+    % Case 1: \(y \in (A-B)\) \\
+    % \indent
+    By definition of complement, \(y \in A \land y \notin B\) \\
+    % \indent
+    Thus \(y \in A \land y \notin (B \cap C)\) \\
+    % \indent
+    Thus by definition of complement \(y \in A-(B \cap C)\) \\
+    Therefore \((A-B) \cup (A - C) \subseteq A-(B \cap C)\) \\
+
+    \noindent
+    Therefore \(A-(B \cap C) = (A-B) \cup (A - C)\) \\
+\end{proof}
+
+\begin{theorem}
+    If \(n \in \mathcal{Z}\), then \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n + 1)!}\) \\
+    Note: \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = \sum_{i=1}^{i}{\frac{i}{(i+1)!}}\) \\
+    Basis Step: Observe at \(n = 1\), \(\frac{1}{2!} = 1 - \frac{1}{2!}\) is true. \\
+    Inductive Step: Suppose \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n + 1)!}\) \\
+    Then \(\sum_{i=1}^{n}{\frac{i}{(i+1)!}} + \frac{n+1}{(n+2)!} = 1-\frac{1}{(n+1)!} + \frac{n+1}{(n+2)!}\) \\
+    = \(1 - \frac{(n+2)!}{(n+1)!(n+2)!} + \frac{(n+1)(n+1)!}{(n+1)!(n+2)!}\) \\
+    = \(1 - \frac{(n+1)!(n+2)}{(n+1)!(n+2)!} + \frac{(n+1)(n+1)!}{(n+1)!(n+2)!}\) \\
+    = \(1 - \frac{(n+1)!((n+2)-(n+1))}{(n+1)!(n+2)!}\) = \(1 - \frac{(n+2)-(n+1)}{(n+2)!}\) \\
+    = \(1 - \frac{1}{(n+2)!}\) \\
+    Therefore \(\sum_{i=1}^{n}{\frac{i}{(i+1)!}} + \frac{n+1}{(n+2)!} = 1 - \frac{1}{(n+2)!}\)
+\end{theorem}
+
+\end{document}
