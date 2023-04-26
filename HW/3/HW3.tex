@@ -22,7 +22,8 @@
     By definition of set equality, \(A = B \iff A \subseteq B \land B \subseteq A\). \\
     Proving \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\
     Suppose \(x \in A-(B \cap C)\) \\
-    By definition of complement, \(x \in A \land x \notin (B \cap C)\) \\
+    By definition of difference, \(x \in A \land x \notin (B \cap C)\) \\
+    Which means \(x \in (A - B) \lor x \in (A - C)\) \\
     Thus \(x \in (A-B) \cup (A - C)\) \\
     Therefore \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\
 
@@ -31,22 +32,21 @@
     Suppose \(y \in (A-B) \cup (A - C)\) \\
     By definition of union, \(y \in (A-B) \lor y \in (A - C)\) \\
     WLOG suppose \(y \in (A-B)\) \\
-    % Case 1: \(y \in (A-B)\) \\
-    % \indent
-    By definition of complement, \(y \in A \land y \notin B\) \\
-    % \indent
+    By definition of difference, \(y \in A \land y \notin B\) \\
     Thus \(y \in A \land y \notin (B \cap C)\) \\
-    % \indent
-    Thus by definition of complement \(y \in A-(B \cap C)\) \\
+    Thus by definition of difference \(y \in A-(B \cap C)\) \\
     Therefore \((A-B) \cup (A - C) \subseteq A-(B \cap C)\) \\
 
     \noindent
-    Therefore \(A-(B \cap C) = (A-B) \cup (A - C)\) \\
+    Therefore \(A-(B \cap C) = (A-B) \cup (A - C)\)
 \end{proof}
 
 \begin{theorem}
-    If \(n \in \mathcal{Z}\), then \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n + 1)!}\) \\
-    Note: \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = \sum_{i=1}^{i}{\frac{i}{(i+1)!}}\) \\
+    If \(n \in \mathbb{Z}\), then \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n + 1)!}\) \\
+    Note: \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = \sum_{i=1}^{n}{\frac{i}{(i+1)!}}\)
+\end{theorem}
+\begin{proof}
+    By mathematical induction. \\
     Basis Step: Observe at \(n = 1\), \(\frac{1}{2!} = 1 - \frac{1}{2!}\) is true. \\
     Inductive Step: Suppose \(\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n + 1)!}\) \\
     Then \(\sum_{i=1}^{n}{\frac{i}{(i+1)!}} + \frac{n+1}{(n+2)!} = 1-\frac{1}{(n+1)!} + \frac{n+1}{(n+2)!}\) \\
@@ -55,6 +55,20 @@
     = \(1 - \frac{(n+1)!((n+2)-(n+1))}{(n+1)!(n+2)!}\) = \(1 - \frac{(n+2)-(n+1)}{(n+2)!}\) \\
     = \(1 - \frac{1}{(n+2)!}\) \\
     Therefore \(\sum_{i=1}^{n}{\frac{i}{(i+1)!}} + \frac{n+1}{(n+2)!} = 1 - \frac{1}{(n+2)!}\)
+\end{proof}    
+
+\begin{theorem}
+    If \(n \in \mathbb{Z}, \) then \(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^n} \geq 1 + \frac{n}{2}\).
 \end{theorem}
+\begin{proof}
+    By mathematical induction. \\
+    Basis Step: Observe at \(n = 1\), \(\frac{1}{1} + \frac{1}{2} \geq 1 + \frac{1}{2}\) is true. \\
+    Inductive Step: Suppose \(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^n} \geq 1 + \frac{n}{2}\) \\
+    That is to say, suppose \(\sum_{i=1}^{2^n}{\frac{1}{i}} \geq 1 + \frac{n}{2}\). \\
+    Then \(\sum_{i=1}^{2^n}{\frac{1}{i}} + \sum_{i=2^n}^{2^{n+1}} \geq 1 + \frac{n}{2} + \sum_{i=2^n+1}^{2^{n+1}}{\frac{1}{i}}\) \\
+    There are \(2^n\) terms in the sum \(\sum_{i=2^n+1}^{2^{n+1}}{\frac{1}{i}}\), and they are all \(\geq \frac{1}{2^{n+1}}\), so their sum is \(\geq \frac{2^n}{2^{n+1}} = \frac{1}{2}\) \\
+    Thus \(\sum_{i=1}^{2^{n+1}}{\frac{1}{i}} \geq 1 + \frac{n}{2} + \sum_{i=2^n+1}^{2^{n+1}}{\frac{1}{i}} \geq 1 + \frac{n}{2} + \frac{1}{2} = 1 + \frac{n+1}{2}\) \\
+    Hence, we have shown that \(\sum_{i=1}^{2^n}{\frac{1}{i}} \geq 1 + \frac{n}{2}\) holds for all \(n \in \mathbb{Z}\) \\
+\end{proof}
 
 \end{document}

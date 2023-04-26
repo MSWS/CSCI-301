@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{makecell}
+% \usepackage{lscape}
+
+\title{\vspace{-5ex}CSCI 301 HW 3}
+\author{Isaac Boaz}
+
+\newtheorem*{theorem}{Proposition}
+
+\begin{document}
+\maketitle
+
+\begin{theorem}
+    If $A$, $B$, and $C$ are sets, then $A - (B \cap C) = (A - B) \cup (A - C)$.
+\end{theorem}
+
+\begin{proof}
+To prove the set equality $A - (B \cap C) = (A - B) \cup (A - C)$, we need to show that every element in $A - (B \cap C)$ is also in $(A - B) \cup (A - C)$ and vice versa. 
+
+First, let $x$ be an element of $A - (B \cap C)$. This means that $x$ is in $A$, but not in $B \cap C$. In other words, $x$ is in $A$, but not in both $B$ and $C$. Therefore, $x$ must be in either $(A - B)$ or $(A - C)$, or both. Hence, $x$ is in $(A - B) \cup (A - C)$. 
+
+Conversely, let $y$ be an element of $(A - B) \cup (A - C)$. This means that $y$ is in either $(A - B)$ or $(A - C)$, or both. If $y$ is in $(A - B)$, then $y$ is in $A$, but not in $B$. If $y$ is in $(A - C)$, then $y$ is in $A$, but not in $C$. In either case, $y$ is not in $B \cap C$. Therefore, $y$ is in $A - (B \cap C)$. 
+
+Since we have shown that every element in $A - (B \cap C)$ is also in $(A - B) \cup (A - C)$ and vice versa, we can conclude that $A - (B \cap C) = (A - B) \cup (A - C)$. 
+\end{proof}
+
+\begin{theorem}
+    If $n \in \mathbb{Z}$, then $\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n + 1)!}$. \\
+    Note: $\frac{1}{2!} + \frac{2}{3!} + \frac{3}{4!} + \cdots + \frac{n}{(n+1)!} = \sum_{i=1}^{n}{\frac{i}{(i+1)!}}$.
+\end{theorem}
+\begin{proof}
+We will prove the proposition by mathematical induction.
+
+\textbf{Base case:} Let $n=1$. Then the left-hand side of the equation is $\frac{1}{2!} = \frac{1}{2}$, and the right-hand side is $1 - \frac {1}{(n+1)!} = 1 - \frac{1}{2!} = \frac{1}{2}$. Hence, the proposition is true for $n=1$. 
+
+\textbf{Inductive step:} Assume that the proposition is true for some integer $k\geq1$, i.e., 
+\[\sum_{i=1}^{k}{\frac{i}{(i+1)!}} = 1 - \frac{1}{(k + 1)!}.\]
+We want to show that the proposition is also true for $n=k+1$, i.e., 
+\[\sum_{i=1}^{k+1}{\frac{i}{(i+1)!}} = 1 - \frac{1}{((k+1) + 1)!}.\]
+
+To prove this, we start with the left-hand side of the equation:
+\begin{align*}
+    \sum_{i=1}^{k+1}{\frac{i}{(i+1)!}} &= \sum_{i=1}^{k}{\frac{i}{(i+1)!}} + \frac{k+1}{(k+2)!} && \\
+    &= 1 - \frac{1}{(k + 1)!} + \frac{k+1}{(k+2)!} && \text{(by the inductive hypothesis)} \\
+    &= 1 - \frac{k+2}{(k+2)!} + \frac{k+1}{(k+2)!} && \\
+    &= 1 - \frac{1}{(k+2)!}.
+\end{align*}
+
+Therefore, we have shown that the proposition is true for $n=k+1$. 
+
+By the principle of mathematical induction, the proposition is true for all integers $n\geq1$. 
+\end{proof}
+
+\begin{theorem}
+    If $n \in \mathbb{Z}, $ then $\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^n} \geq 1 + \frac{n}{2}$.
+\end{theorem}
+\begin{proof}
+We will prove the proposition by mathematical induction.
+
+\textbf{Base case:} Let $n=1$. Then the left-hand side of the inequality is $\frac{1}{1} + \frac{1}{2} = \frac{3}{2}$, and the right-hand side is $1 + \frac{1}{2} = \frac{3}{2}$. Hence, the proposition is true for $n=1$. 
+
+\textbf{Inductive step:} Assume that the proposition is true for some integer $k\geq1$, i.e., 
+\[\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^k} \geq 1 + \frac{k}{2}.\]
+We want to show that the proposition is also true for $n=k+1$, i.e., 
+\[\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^{k+1}} \geq 1 + \frac{k+1}{2}.\]
+
+To prove this, we start with the left-hand side of the inequality:
+\begin{align*}
+    &\frac{1}{1} + \frac{1}{2} + \frac{1}{2^k} + \frac{1}{2^{k+1}} \\
+    &= \left(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^k}\right) + \frac{1}{2^{k}} - \frac{1}{2^{k}} + \frac{1}{2^{k+1}} \\
+    &\geq \left(1 + \frac{k}{2}\right) + \frac{1}{2^{k}} - \frac{1}{2^{k}} + \frac{1}{2^{k+1}} && \text{(by the inductive hypothesis)} \\
+    &= 1 + \frac{k+1}{2^{k+1}} \\
+    &= 1 + \frac{k+1}{2}\cdot\frac{1}{2^k} \\
+    &\geq 1 + \frac{k+1}{2},
+\end{align*}
+where the last inequality follows from the fact that $2^k \geq 2$, since $k\geq 1$. 
+
+Therefore, we have shown that the proposition is true for $n=k+1$. 
+
+By the principle of mathematical induction, the proposition is true for all integers $n\geq1$. 
+\end{proof}
+
+\end{document}
