@@ -23,10 +23,12 @@
     Proving \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\
     Suppose \(x \in A-(B \cap C)\) \\
     By definition of difference, \(x \in A \land x \notin (B \cap C)\) \\
-    Which means \(x \in (A - B) \lor x \in (A - C)\) \\
-    Thus \(x \in (A-B) \cup (A - C)\) \\
-    Therefore \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\
-
+    By definition of intersection, \(x\) could be in \(B\) or \(C\), but not both. \\
+    WLOG Suppose \(x \in B\). \\
+    Then \(x \in B \land x \notin C\). \\
+    By definition of complement, \(x \in (A - C)\). \\
+    By definition of union, \(x \in (A-B) \cup (A - C)\) \\
+    Therefore \(A-(B \cap C) \subseteq (A-B) \cup (A - C)\) \\[2ex]
     \noindent
     Proving \((A-B) \cup (A - C) \subseteq A-(B \cap C)\) \\
     Suppose \(y \in (A-B) \cup (A - C)\) \\
@@ -55,7 +57,7 @@
     = \(1 - \frac{(n+1)!((n+2)-(n+1))}{(n+1)!(n+2)!}\) = \(1 - \frac{(n+2)-(n+1)}{(n+2)!}\) \\
     = \(1 - \frac{1}{(n+2)!}\) \\
     Therefore \(\sum_{i=1}^{n}{\frac{i}{(i+1)!}} + \frac{n+1}{(n+2)!} = 1 - \frac{1}{(n+2)!}\)
-\end{proof}    
+\end{proof}
 
 \begin{theorem}
     If \(n \in \mathbb{Z}, \) then \(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{2^n} \geq 1 + \frac{n}{2}\).
