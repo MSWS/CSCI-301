@@ -132,7 +132,36 @@ That is to say, \(f\) is injective if and only if \(f(m, n) = f(p, q) \implies (
     Therefore \(f(a, b) = f(c, d) \implies (a, b) = (c, d)\)
 \end{proof}
 
+\pagebreak
+
 \textbf{Surjective} \(f\) is surjective if and only if \(f(\mathbb{Z} \times \mathbb{Z}) = \mathbb{Z} \times \mathbb{Z}\). \\
 That is to say, \(f\) is surjective if and only if \(\forall (m, n) \in \mathbb{Z} \times \mathbb{Z}, \exists (a, b) \in \mathbb{Z} \times \mathbb{Z} \text{ such that } f(a, b) = (m, n)\).
+\begin{proof}
+    Suppose \((a, b) \in \mathbb{Z} \times \mathbb{Z}\). \\
+    Then
+    \begin{align*}
+        (a, b) & = f(m, n)            \\
+               & = (5m + 4n, 4m + 3n) \\
+        a      & = 5m + 4n            \\
+        b      & = 4m + 3n
+    \end{align*}
+    \begin{align*}
+        n & = \frac{b - 4m}{3} \\
+        a & = \frac{4b-m}{3}   \\
+        m & = 4b - 3a
+    \end{align*}
+    \begin{align*}
+        5m & = a - 4n                 \\
+        m  & = \frac{a-4n}{5}         \\
+        b  & = 4(\frac{a-4n}{5}) + 3n \\
+        n  & = 4a - 5b
+    \end{align*}
+    \begin{align*}
+        f(m, n) & = (5m + 4n, 4m + 3n)                         \\
+                & = 5(4b-3a) + 4(4a - 5b), 4(4b-3a) + 3(4a-5b) \\
+                & = a, b
+    \end{align*}
+    Therefore \(\forall (m, n) \in \mathbb{Z} \times \mathbb{Z}, \exists (a, b) \in \mathbb{Z} \times \mathbb{Z} \text{ such that } f(a, b) = (m, n)\).
+\end{proof}
 
 \end{document}
