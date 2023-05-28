@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+
+\title{\vspace{-5ex}CSCI 301 HW 6}
+\author{Isaac Boaz}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+
+\begin{enumerate}[label=\alph*.]
+    \item \begin{align*}
+        S & \rightarrow A \mid B \\
+        A & \rightarrow \epsilon \mid aAbb \\
+        B & \rightarrow aaab \mid aaaBb
+    \end{align*}
+    \item \begin{align*}
+        S & \rightarrow aAB \\
+        A & \rightarrow \epsilon \mid aA  \\
+        B & \rightarrow ab \mid aBb
+    \end{align*}
+    \item \begin{align*}
+        S & \rightarrow \epsilon \mid aSb \mid bSa \\
+        S & \rightarrow abSba \mid baSab
+    \end{align*}
+\end{enumerate}
+
+\pagebreak
+\section*{Problem 2}
+\begin{center}
+    \begin{tikzpicture}[shorten >=1pt,node distance=3.5cm,on grid,auto,align=center]
+        \node[state,initial,accepting] (q0) {$q_0$};
+        \node[state] (q1) [above right=3.5cm and 5cm of q0] {$q_1$};
+        \node[state] (q2) [below right=3.5cm and 5cm of q0] {$q_2$};
+        \node[state,accepting] (q3) [below right=3.5cm and 5cm of q1] {$q_3$};
+        \path[->]
+            (q0) edge[above left] node {\(\frac{a, X}{\text{push(} a\text{)}}\)} (q1)
+            (q0) edge[below left] node {\(\frac{b, X}{\text{push(} b\text{)}}\)} (q2)
+            (q1) edge[loop above] node {\(\frac{a, ?}{\text{push(} a\text{)}}, \frac{b, ?}{\text{pop(}b\text{)}}\)} ()
+            (q2) edge[loop below] node {\(\frac{a, ?}{\text{pop(} a\text{)}}, \frac{b, ?}{\text{push(}b\text{)}}\)} ()
+            (q1) edge[above right] node {\(\frac{\$, X}{\text{nop}}\)} (q3)
+            (q2) edge[below right] node {\(\frac{\$, X}{\text{nop}}\)} (q3);
+    \end{tikzpicture}
+\end{center}
+
+\pagebreak
+\section*{Problem 3}
+
+\begin{tabular}{llc}
+\textbf{Derivation} & \textbf{Rule} & \textbf{Lookahead} \\
+\hline
+\(E \implies TR\) & \(E \rightarrow TR\) & ( \\
+\(TR \implies FVR\) & \(T \rightarrow FV\) & ( \\
+\(FVR \implies (E)VR\) & \(F \rightarrow (E)\) & ( \\
+\((E)VR \implies (TR)VR\) & \(E \rightarrow TR\) & ( \\
+\((TR)VR \implies (FVR)VR\) & \(T \rightarrow FV\) & a \\
+\((FVR)VR \implies (aVR)VR\) & \(F \rightarrow a\) & a \\
+\((aVR)VR \implies (aR)VR\) & \(V \rightarrow \Lambda\) & + \\
+\((aR)VR \implies (a+TR)VR\) & \(R \rightarrow +TR\) & + \\
+\((a+TR)VR \implies (a+FVR)VR\) & \(T \rightarrow FV\) & a \\
+\((a+FVR)VR \implies (a+aVR)VR\) & \(F \rightarrow a\) & a \\
+\((a+aVR)VR \implies (a+aR)VR\) & \(V \rightarrow \Lambda\) & ) \\
+\((a+aR)VR \implies (a+a)VR\) & \(R \rightarrow \Lambda\) & ) \\
+\((a+a)VR \implies (a+a)*FVR\) & \(V \rightarrow *FV\) & * \\
+\((a+a)*FVR \implies (a+a)*aVR\) & \(F \rightarrow a\) & a \\
+\((a+a)*aVR \implies (a+a)*aR\) & \(V \rightarrow \Lambda\) & \$ \\
+\((a+a)*aR \implies (a+a)*a\) & \(R \rightarrow \Lambda\) & \$ \\
+\end{tabular}
+
+\end{document}
