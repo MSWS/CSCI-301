@@ -45,8 +45,8 @@
         \path[->]
             (q0) edge[above left] node {\(\frac{a, X}{\text{push(} a\text{)}}\)} (q1)
             (q0) edge[below left] node {\(\frac{b, X}{\text{push(} b\text{)}}\)} (q2)
-            (q1) edge[loop above] node {\(\frac{a, ?}{\text{push(} a\text{)}}, \frac{b, ?}{\text{pop(}b\text{)}}\)} ()
-            (q2) edge[loop below] node {\(\frac{a, ?}{\text{pop(} a\text{)}}, \frac{b, ?}{\text{push(}b\text{)}}\)} ()
+            (q1) edge[loop above] node {\(\frac{a, ?}{\text{push(} a\text{)}}, \frac{b, ?}{\text{pop(}a\text{)}}\)} ()
+            (q2) edge[loop below] node {\(\frac{a, ?}{\text{pop(} b\text{)}}, \frac{b, ?}{\text{push(}b\text{)}}\)} ()
             (q1) edge[above right] node {\(\frac{\$, X}{\text{nop}}\)} (q3)
             (q2) edge[below right] node {\(\frac{\$, X}{\text{nop}}\)} (q3);
     \end{tikzpicture}
